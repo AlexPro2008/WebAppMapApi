@@ -29,9 +29,9 @@ public class MapFactory : DbContext
     // конструктор
     public MapFactory(DbContextOptions<MapFactory> options) : base(options)
     {
-        // создание бд             
+        // создание бд
         // Database.EnsureDeleted();
-        Database.EnsureCreated();        
+        Database.EnsureCreated();
     } // BirdFactory
-        
+
 } // BirdFactory

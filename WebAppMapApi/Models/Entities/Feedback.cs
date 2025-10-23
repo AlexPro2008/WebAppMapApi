@@ -12,10 +12,13 @@ public class Feedback
     // Текст отзыва
     public string Text { get; set; } = "";
 
+    public string ImagePath { get; set; } = "";
     // Оценка
     public int Rating { get; set; }
 
-    // Аккаунт, который оставил отзыв
+    public FeedbackResponse Response { get; set; } = null!;
+
+    // Аккаунт, который оставил ответ на отзыв
     public int AccountId { get; set; }
     public virtual Account Account { get; set; } = null!;
 

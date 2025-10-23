@@ -11,16 +11,14 @@ public class Favorite
     public int Id { get; set; }
 
     // Точки координат
-    public LineString Coordinates { get; set; } 
+    public LineString Coordinates { get; set; } = LineString.Empty;
 
-    
     // Описание
     public string Description { get; set; } = "";
 
     // Аккаунт, который добавил в избранное
     public int AccountId { get; set; }
     public virtual Account Account { get; set; } = null!;
-    
 
     public Favorite() { }
 } // Favourite

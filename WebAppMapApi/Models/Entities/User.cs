@@ -3,7 +3,7 @@ using WebAppMapApi.Models.Configurations;
 
 namespace WebAppMapApi.Models.Entities;
 
-// Пользователь 
+// Пользователь
 // содержит базовую информацию о пользователе
 [EntityTypeConfiguration(typeof(UserConfiguration))]
 public class User
@@ -11,13 +11,8 @@ public class User
     // Ид
     public int Id { get; set; }
 
-    // Фамилия
-    public string Surname { get; set; } = "";
-
-    // Имя
     public string Name { get; set; } = "";
-
-    // Отчесто
+    public string Surname { get; set; } = "";
     public string Patronymic { get; set; } = "";
 
     // Ид аккаунта

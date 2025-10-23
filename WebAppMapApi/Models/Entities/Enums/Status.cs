@@ -3,6 +3,7 @@
 // перечисление статусов аккаунта
 public enum Status
 {
-    Active,     // активен 
+    Deleted,
+    Active,     // активен
     Banned      // заблокирован
 } // Status

@@ -16,6 +16,5 @@ public class MapController(MapFactory factory) : ControllerBase
     {
         var user = await factory.Users.Select(e => new {e.Id,FullName = $"{e.Surname} {e.Name} {e.Patronymic}"}).ToListAsync();
         return Ok(user);
-    } // Test
-} // MapController
-
+    }
+}
