@@ -11,7 +11,7 @@ public class Favorite
     public int Id { get; set; }
 
     // Точки координат
-    public LineString Coordinates { get; set; } = LineString.Empty;
+    public LineString? Coordinates { get; set; }
 
     // Описание
     public string Description { get; set; } = "";

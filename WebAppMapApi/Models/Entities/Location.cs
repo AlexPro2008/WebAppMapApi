@@ -14,7 +14,7 @@ public class Location
     public TimeOnly ClosingTime { get; set; } = TimeOnly.MaxValue;
 
     public List<string> CustomImagePaths { get; set; } = [];
-    public List<Feedback> Feedbacks { get; set; } = [];
+    public virtual List<Feedback> Feedbacks { get; set; } = [];
 
     public int OwnerId;
     public Account Owner = null!;

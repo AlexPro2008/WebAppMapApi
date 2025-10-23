@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebAppMapApi.Models;
 using WebAppMapApi.Models.Entities;
+using WebAppMapApi.Records;
 
 namespace WebAppMapApi.Controllers;
 
@@ -9,15 +10,15 @@ namespace WebAppMapApi.Controllers;
 public class FeedbackResponseController(MapFactory factory) : ControllerBase
 {
     [HttpPost("add-update-response")]
-    public async Task<IActionResult> AddUpdateResponse([FromBody] Feedback feedback, [FromBody] string response)
+    public async Task<IActionResult> AddUpdateResponse([FromBody] FeedbackResponseUpdate update)
     {
-        Feedback? fb = factory.Feedbacks.First(e => e.Id == feedback.Id);
+        Feedback? fb = factory.Feedbacks.First(e => e.Id == update.Feedback.Id);
 
         if (fb is null)
             return NotFound();
 
-        fb.Response = response;
-        factory.Update(feedback);
+        fb.Response = update.Response;
+        factory.Update(fb);
 
         await factory.SaveChangesAsync();
 
