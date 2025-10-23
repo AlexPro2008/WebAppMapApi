@@ -3,10 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WebAppMapApi.Models.Entities;
 
 namespace WebAppMapApi.Models.Configurations;
-// для конфигурация Отзыва
+
 public class FeedbackConfiguration : IEntityTypeConfiguration<Feedback>
 {
-    // конфигурируем
     public void Configure(EntityTypeBuilder<Feedback> builder)
     {
         // Связываем сущности
@@ -24,6 +23,5 @@ public class FeedbackConfiguration : IEntityTypeConfiguration<Feedback>
         // ограничение
         builder.ToTable(e => e
                .HasCheckConstraint("CK_Feedback_Rating", "Rating >= 1 AND Rating <= 5"));
-    } // Configure
-
-} // FeedbackConfiguration
+    }
+}

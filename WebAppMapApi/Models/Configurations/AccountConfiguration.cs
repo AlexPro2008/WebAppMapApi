@@ -2,10 +2,9 @@
 using WebAppMapApi.Models.Entities;
 
 namespace WebAppMapApi.Models.Configurations;
-// для конфигурация Аккаунта
+
 public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
-    // конфигурируем
     public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Account> builder)
     {
         // связываем данные
@@ -31,7 +30,7 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
         builder.Property(a => a.Login).HasMaxLength(50).IsRequired();
         builder.Property(a => a.Password).HasMaxLength(100).IsRequired();
         builder.Property(a => a.Path).HasMaxLength(200).IsRequired();
-        // добавляем данные
+        // Добавляем тестовые данные
         builder.HasData(
             new Account
             {
@@ -44,5 +43,5 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
                 Role = Entities.Enums.Role.Business
             }
         );
-    } // Configure
-} // AccountConfiguration
+    }
+}

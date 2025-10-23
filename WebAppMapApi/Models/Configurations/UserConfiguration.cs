@@ -4,8 +4,6 @@ using WebAppMapApi.Models.Entities;
 
 namespace WebAppMapApi.Models.Configurations;
 
-
-// для конфигурация Пользователя
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     // конфигурируем
@@ -23,7 +21,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Name).HasMaxLength(70).IsRequired();
         builder.Property(u => u.Patronymic).HasMaxLength(70).IsRequired();
 
-        // добавляем данные
+        // Добавляем тестовые данные
         builder.HasData(
             new User
             {
@@ -33,6 +31,5 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
                 Patronymic = "Иванович"
             }
         );
-
-    } // Configure
-} // AcceptConfiguration
+    }
+}

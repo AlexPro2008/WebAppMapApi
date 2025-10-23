@@ -1,5 +1,4 @@
 ﻿namespace WebAppMapApi.Models.Entities.Enums;
-// перечисления ролей
 
 public enum Role
 {
@@ -9,4 +8,4 @@ public enum Role
     Moderator,
     Admin
 
-} // Role
+}

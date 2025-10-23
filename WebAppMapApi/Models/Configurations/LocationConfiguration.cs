@@ -6,17 +6,13 @@ namespace WebAppMapApi.Models.Configurations;
 
 public class LocationConfiguration : IEntityTypeConfiguration<Location>
 {
-
     public void Configure(EntityTypeBuilder<Location> builder)
     {
-
-        // Fill out the data
+        // Добавляем тестовые данные
         builder.HasData(Enumerable.Range(1, 5).Select(s => new Location()
         {
             Id = s,
-            Name = $"Место {s}",
-
+            Name = $"Место {s}"
         }));
     }
-
 }
