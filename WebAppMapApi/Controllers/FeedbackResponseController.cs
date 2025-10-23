@@ -9,7 +9,7 @@ namespace WebAppMapApi.Controllers;
 public class FeedbackResponseController(MapFactory factory) : ControllerBase
 {
     [HttpPost("add-update-response")]
-    public async Task<IActionResult> AddUpdateResponse([FromBody] Feedback feedback, [FromBody] FeedbackResponse response)
+    public async Task<IActionResult> AddUpdateResponse([FromBody] Feedback feedback, [FromBody] string response)
     {
         Feedback? fb = factory.Feedbacks.First(e => e.Id == feedback.Id);
 
@@ -17,22 +17,11 @@ public class FeedbackResponseController(MapFactory factory) : ControllerBase
             return Ok("Not found");
 
         fb.Response = response;
-
-        string result;
-        if (fb.Response is null)
-        {
-            factory.Add(feedback);
-            result = "Created";
-        }
-        else
-        {
-            factory.Update(feedback);
-            result = "Updated";
-        }
+        factory.Update(feedback);
 
         await factory.SaveChangesAsync();
 
-        return Ok(result);
+        return Ok("Updated");
     }
 
     [HttpDelete("delete-response")]
@@ -43,7 +32,7 @@ public class FeedbackResponseController(MapFactory factory) : ControllerBase
         string result = "Not found";
         if (fb is not null)
         {
-            fb.Response = null!;
+            fb.Response = "";
             factory.Update(fb);
             result = "Removed";
             await factory.SaveChangesAsync();

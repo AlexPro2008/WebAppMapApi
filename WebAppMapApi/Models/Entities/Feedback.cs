@@ -16,7 +16,7 @@ public class Feedback
     // Оценка
     public int Rating { get; set; }
 
-    public FeedbackResponse Response { get; set; } = null!;
+    public string Response { get; set; } = string.Empty;
 
     // Аккаунт, который оставил ответ на отзыв
     public int AccountId { get; set; }

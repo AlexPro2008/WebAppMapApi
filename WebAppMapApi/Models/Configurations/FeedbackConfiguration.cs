@@ -19,6 +19,8 @@ public class FeedbackConfiguration : IEntityTypeConfiguration<Feedback>
         builder.Property(f => f.Text).HasMaxLength(1000).IsRequired();
         builder.Property(f => f.Rating).IsRequired();
 
+        builder.Property(f => f.Response).HasMaxLength(1000);
+
         // ограничение
         builder.ToTable(e => e
                .HasCheckConstraint("CK_Feedback_Rating", "Rating >= 1 AND Rating <= 5"));

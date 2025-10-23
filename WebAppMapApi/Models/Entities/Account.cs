@@ -30,8 +30,6 @@ public class Account
     // много отзывов
     public virtual List<Feedback> Feedbacks { get; set; } = [];
 
-    public virtual List<FeedbackResponse> Responses { get; set; } = [];
-
     // много избранных
     public virtual List<Favorite> Favorites { get; set; } = [];
 } // Account
