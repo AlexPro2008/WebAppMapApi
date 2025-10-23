@@ -4,9 +4,9 @@
 public enum Role
 {
     Guest,
-    User,   
-    General, // Владельец 
+    User,
+    Business,
     Moderator,
     Admin
-    
+
 } // Role

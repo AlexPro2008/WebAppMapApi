@@ -35,14 +35,16 @@ public class FeedbackController(MapFactory factory) : ControllerBase
     {
         Feedback? fav = factory.Feedbacks.First(e => e.Id == feedback.Id);
 
-        string result = "Not found";
         if (fav is not null)
         {
             factory.Remove(feedback);
-            result = "Removed";
             await factory.SaveChangesAsync();
         }
+        else
+        {
+            return NotFound();
+        }
 
-        return Ok(result);
+        return Ok("Deleted");
     }
 }

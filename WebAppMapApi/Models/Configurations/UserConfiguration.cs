@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebAppMapApi.Models.Entities;
 
 namespace WebAppMapApi.Models.Configurations;
@@ -36,9 +31,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
                 Surname = "Иванов",
                 Name = "Иван",
                 Patronymic = "Иванович"
-            }          
+            }
         );
 
     } // Configure
 } // AcceptConfiguration
-

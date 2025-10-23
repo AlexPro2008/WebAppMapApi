@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using WebAppMapApi.Models.Entities;
 
 namespace WebAppMapApi.Models.Configurations;
-// для конфигурация Аккаунта   
+// для конфигурация Аккаунта
 public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
     // конфигурируем
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WebAppMapApi.Models.Entities.Account> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Account> builder)
     {
         // связываем данные
         // Пользователь
@@ -34,15 +33,15 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
         builder.Property(a => a.Path).HasMaxLength(200).IsRequired();
         // добавляем данные
         builder.HasData(
-            new WebAppMapApi.Models.Entities.Account
+            new Account
             {
                 Id = 1,
                 Login = "ivanov",
                 Password = "password123",
                 Path = "/users/ivanov",
                 UserId = 1,
-                Status = WebAppMapApi.Models.Entities.Enums.Status.Active,
-                Role = WebAppMapApi.Models.Entities.Enums.Role.General
+                Status = Entities.Enums.Status.Active,
+                Role = Entities.Enums.Role.Business
             }
         );
     } // Configure

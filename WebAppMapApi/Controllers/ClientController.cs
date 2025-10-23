@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebAppMapApi.Models.Entities;
 using WebAppMapApi.Models;
 using Microsoft.EntityFrameworkCore;
-using WebAppMapApi.Models.Entities.Enums;
+using WebAppMapApi.Records;
 
 namespace WebAppMapApi.Controllers;
 
@@ -16,26 +16,29 @@ public class ClientController(MapFactory factory) : ControllerBase
         User? user = await factory.Users.FirstAsync(e => e.Id == id);
 
         if (user is null)
-            return Ok("Not found");
+            return NotFound();
 
         return Ok(user);
     }
 
     [HttpGet("get-all")]
-    public async Task<IActionResult> GetAll()
+    public Task<IActionResult> GetAll()
     {
-        return Ok(factory.Users);
+        // Метод синхронный, но должен возвращать Task
+        // Заворачиваем результат в Task и возвращаем
+        IActionResult status = Ok(factory.Users);
+        return Task.FromResult(status);
     }
 
-    [HttpGet("change-status")]
-    public async Task<IActionResult> ChangeStatus([FromBody] int id, [FromBody] Status status)
+    [HttpPut("change-status")]
+    public async Task<IActionResult> ChangeStatus([FromBody] UserStatusUpdate status)
     {
-        User? user = await factory.Users.FirstAsync(e => e.Id == id);
+        User? user = await factory.Users.FirstAsync(e => e.Id == status.Id);
 
         if (user is null)
-            return Ok("Not found");
+            return NotFound();
 
-        user.Account.Status = status;
+        user.Account.Status = status.Status;
         factory.Update(user);
 
         await factory.SaveChangesAsync();

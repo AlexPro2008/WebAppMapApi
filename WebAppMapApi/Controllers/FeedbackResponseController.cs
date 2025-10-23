@@ -14,7 +14,7 @@ public class FeedbackResponseController(MapFactory factory) : ControllerBase
         Feedback? fb = factory.Feedbacks.First(e => e.Id == feedback.Id);
 
         if (fb is null)
-            return Ok("Not found");
+            return NotFound();
 
         fb.Response = response;
         factory.Update(feedback);
@@ -29,15 +29,17 @@ public class FeedbackResponseController(MapFactory factory) : ControllerBase
     {
         Feedback? fb = factory.Feedbacks.First(e => e.Id == feedback.Id);
 
-        string result = "Not found";
         if (fb is not null)
         {
             fb.Response = "";
             factory.Update(fb);
-            result = "Removed";
             await factory.SaveChangesAsync();
         }
+        else
+        {
+            return NotFound();
+        }
 
-        return Ok(result);
+        return Ok("Removed");
     }
 }

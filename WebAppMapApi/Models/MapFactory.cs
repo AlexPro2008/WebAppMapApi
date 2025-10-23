@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Dynamic;
 using WebAppMapApi.Models.Entities;
 
-
-
 namespace WebAppMapApi.Models;
-
 
 // контекст базы данных
 
@@ -23,6 +19,9 @@ public class MapFactory : DbContext
 
     // коллекция Избранных
     public DbSet<Favorite> Favorites => Set<Favorite>();
+
+    // коллекция Локаций
+    public DbSet<Location> Locations => Set<Location>();
 
     #endregion
 
